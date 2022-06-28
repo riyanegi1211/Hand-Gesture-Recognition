@@ -4,7 +4,7 @@ from PIL import ImageTk, Image
 from tkinter import *
 from tkinter import messagebox
 import snake_game
-import main
+import HandGesture
 
 # QUIT Function
 
@@ -25,8 +25,8 @@ def about():
     messagebox._show(title="About", message="This Hand Gesture Identification System is designed by Mohak Kala and Riya Negi!")
 
 
-def HandGesture():
-    main.HandGesture()
+def Gesture():
+    HandGesture.HandGesture()
     mainWindow()
 
 
@@ -56,7 +56,7 @@ def mainWindow():
     frame1 = tkinter.Frame(window, bg="PaleTurquoise4")
     frame1.place(relx=0.5, rely=0.23, relwidth=0.40, relheight=0.52)
 
-    HandGestureButton = tkinter.Button(frame1, text="Hand Gesture Identification", command=HandGesture, fg="black",
+    HandGestureButton = tkinter.Button(frame1, text="Hand Gesture Identification", command=Gesture, fg="black",
                                        bg="light grey", width=60,
                                        activebackground="white", font=('times', 10, ' bold '))
     HandGestureButton.place(x=170, y=50, relwidth=0.35, relheight=0.15)
