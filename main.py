@@ -17,12 +17,12 @@ def quit_window():
 
 
 def contact():
-    messagebox._show(title="Contact Me", message="If you find you need any help contact me on 'mohakkala07@gmail.com'!")
+    messagebox._show(title="Contact Me", message="If you find you need any help contact me on 'riyasnegi12@gmail.com'!")
 
 
 # about
 def about():
-    messagebox._show(title="About", message="This Hand Gesture Identification System is designed by Mohak Kala!")
+    messagebox._show(title="About", message="This Hand Gesture Identification System is designed by Mohak Kala and Riya Negi!")
 
 
 def HandGesture():
