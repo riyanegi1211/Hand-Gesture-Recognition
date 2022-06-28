@@ -51,7 +51,7 @@ def mainWindow():
 
     canvas = Canvas(window, width=500, height=350)
     canvas.place(relx=0.05, rely=0.23)
-    img = PhotoImage(file="C:/Users/DELL/PycharmProjects/Hand_Gesture_Identification/HandGesture.png")
+    img = PhotoImage(file="E:/HandGesture/HandGesture.png")
     canvas.create_image(0, 0, anchor=NW, image=img)
     frame1 = tkinter.Frame(window, bg="PaleTurquoise4")
     frame1.place(relx=0.5, rely=0.23, relwidth=0.40, relheight=0.52)
