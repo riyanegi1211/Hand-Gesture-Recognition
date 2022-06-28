@@ -31,7 +31,7 @@ def Gesture():
 
 
 def SnakeGame():
-    snake_game.SnakeGame()
+    SnakeGame.Game()
     mainWindow()
 
 
