@@ -1,76 +1,83 @@
-# import necessary packages
+# For GUI
+import tkinter
+from PIL import ImageTk, Image
+from tkinter import *
+from tkinter import messagebox
+import snake_game
+import main
 
-import cv2
-import numpy as np
-import mediapipe as mp
-import tensorflow as tf
-from tensorflow.keras.models import load_model
+# QUIT Function
 
-# initialize mediapipe
-mpHands = mp.solutions.hands
-hands = mpHands.Hands(max_num_hands=1, min_detection_confidence=0.7)
-mpDraw = mp.solutions.drawing_utils
 
-# Load the gesture recognizer model
-model = load_model('mp_hand_gesture')
+def quit_window():
+    if messagebox.askyesno("Quit", "You are exiting window.Do you want to quit?"):
+        window.destroy()
 
-# Load class names
-f = open('gesture.names', 'r')
-classNames = f.read().split('\n')
-f.close()
-print(classNames)
+# contact
 
-# Initialize the webcam
-cap = cv2.VideoCapture(0)
 
-while True:
-    # Read each frame from the webcam
-    _, frame = cap.read()
+def contact():
+    messagebox._show(title="Contact Me", message="If you find you need any help contact me on 'mohakkala07@gmail.com'!")
 
-    x, y, c = frame.shape
 
-    # Flip the frame vertically
-    frame = cv2.flip(frame, 1)
-    framergb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+# about
+def about():
+    messagebox._show(title="About", message="This Hand Gesture Identification System is designed by Mohak Kala!")
 
-    # Get hand landmark prediction
-    result = hands.process(framergb)
 
-    # print(result)
+def HandGesture():
+    main.HandGesture()
+    mainWindow()
 
-    className = ''
 
-    # post process the result
-    if result.multi_hand_landmarks:
-        landmarks = []
-        for handslms in result.multi_hand_landmarks:
-            for lm in handslms.landmark:
-                # print(id, lm)
-                lmx = int(lm.x * x)
-                lmy = int(lm.y * y)
+def SnakeGame():
+    snake_game.SnakeGame()
+    mainWindow()
 
-                landmarks.append([lmx, lmy])
 
-            # Drawing landmarks on frames
-            mpDraw.draw_landmarks(frame, handslms, mpHands.HAND_CONNECTIONS)
+def mainWindow():
+    # Help menubar----------------------------------------------
+    menubar = Menu(window)
+    help = Menu(menubar, tearoff=0)
+    help.add_command(label="Contact Us", command=contact)
+    help.add_separator()
+    help.add_command(label="Exit", command=quit_window)
+    menubar.add_cascade(label="Help", menu=help)
+    menubar.add_command(label="About", command=about)
+    window.config(menu=menubar)
+    message3 = tkinter.Label(window, text="Hand Gesture Identification", fg="white", bg="#355454", width=60, height=1,
+                             font=('times', 29, ' bold '))
+    message3.place(x=5, y=20, relwidth=1)
 
-            # Predict gesture
-            prediction = model.predict([landmarks])
-            # print(prediction)
-            classID = np.argmax(prediction)
-            className = classNames[classID]
+    canvas = Canvas(window, width=500, height=350)
+    canvas.place(relx=0.05, rely=0.23)
+    img = PhotoImage(file="C:/Users/DELL/PycharmProjects/Hand_Gesture_Identification/HandGesture.png")
+    canvas.create_image(0, 0, anchor=NW, image=img)
+    frame1 = tkinter.Frame(window, bg="PaleTurquoise4")
+    frame1.place(relx=0.5, rely=0.23, relwidth=0.40, relheight=0.52)
 
-    # show the prediction on the frame
-    cv2.putText(frame, className, (10, 50), cv2.FONT_HERSHEY_SIMPLEX,
-                1, (0, 0, 255), 2, cv2.LINE_AA)
+    HandGestureButton = tkinter.Button(frame1, text="Hand Gesture Identification", command=HandGesture, fg="black",
+                                       bg="light grey", width=60,
+                                       activebackground="white", font=('times', 10, ' bold '))
+    HandGestureButton.place(x=170, y=50, relwidth=0.35, relheight=0.15)
 
-    # Show the final output
-    cv2.imshow("Output", frame)
+    GameButton = tkinter.Button(frame1, text="Snake Game", fg="black", command=SnakeGame, bg="light grey", width=60,
+                                activebackground="white", font=('times', 10, ' bold '))
+    GameButton.place(x=170, y=150, relwidth=0.35, relheight=0.15)
 
-    if cv2.waitKey(1) == ord('q'):
-        break
+    quit = tkinter.Button(frame1, text="Quit", command=quit_window, fg="black", bg="light grey", width=60,
+                          activebackground="white", font=('times', 10, ' bold '))
+    quit.place(x=170, y=250, relwidth=0.35, relheight=0.15)
 
-# release the webcam and destroy all active windows
-cap.release()
+    window.protocol("WM_DELETE_WINDOW", quit_window)
+    window.mainloop()
 
-cv2.destroyAllWindows()
+# GUI
+window = tkinter.Tk()
+
+
+window.title("Hand Gesture Identification")
+window.geometry("1280x720")
+window.resizable(True, True)
+window.configure(background='#355454')
+mainWindow()
