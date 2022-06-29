@@ -13,8 +13,6 @@ Gesture Identification has been a very interesting problem in `Computer Vision` 
 
 Gesture Identification is an active research field in Human-Computer Interaction technology. It has many applications in virtual environment control and sign language translation, robot control, or music creation. In this machine learning project on Hand Gesture Recognition, we are going to make a real-time Hand Gesture Recognizer using the `MediaPipe` framework and `Tensorflow` in `OpenCV` and Python. OpenCV is a real-time Computer vision and image-processing framework built on C/C++. But we’ll use it on python via the OpenCV-python package.This is a `python-based` application that recognizes hand gestures like okay, peace, thumbs up, thumbs down, call me, stop, rock, live long, fist and smile and also provide a fun game to play by the side, a Snake Game based Hand Gesture and movements We have developed this project using `OpenCV` and `Keras modules` of python. 
 
-## Scope of the project
-
 ## Tech Stack Used
 
 ### Built with
@@ -32,3 +30,8 @@ Gesture Identification is an active research field in Human-Computer Interaction
 ### Hand Gesture Recognition Algorithm
 * Support Vector Machines (SVM)
 * Histogram of Oriented Gradient (HOG)
+
+## Team Members
+[Riya Negi](https://github.com/riyanegi1211)
+
+[Mohak Kala](https://github.com/MohakKala07)
